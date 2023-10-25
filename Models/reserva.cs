@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Wanderley_Flores_WF_Examen.Models
 {
@@ -8,8 +9,26 @@ namespace Wanderley_Flores_WF_Examen.Models
         public int dias { get; set; }
         [Required]
         public String nombre { get; set; }
-        [Range(0.01, 9999.99)]
-        public int precio { get; set; }
+        [VerificarRango]
+        public decimal Precio { get; set; }
+        [MaxLength(20)]
         public String apellido { get; set; }
+        [MaxLength(20)]
+        public String reservar { get; set; }
+    }
+    public class VerificarRango: ValidationAttribute {
+        public override bool IsValid(object? value)
+        {
+            decimal valor =(decimal)value;
+            if (valor < 10)
+            {
+                return false;
+            }
+            return true;
+            return base.IsValid(value);
+        }
+        
+        
+
     }
 }
