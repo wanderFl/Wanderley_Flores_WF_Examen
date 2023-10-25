@@ -11,9 +11,9 @@ namespace Wanderley_Flores_WF_Examen.Models
         public String nombre { get; set; }
         [VerificarRango]
         public decimal Precio { get; set; }
-        [MaxLength(20)]
+        [MaxLength(100)]
         public String apellido { get; set; }
-        [MaxLength(20)]
+        [MaxLength(100)]
         public String reservar { get; set; }
     }
     public class VerificarRango: ValidationAttribute {
@@ -25,7 +25,6 @@ namespace Wanderley_Flores_WF_Examen.Models
                 return false;
             }
             return true;
-            return base.IsValid(value);
         }
         
         
